@@ -2,45 +2,46 @@
 
 /* Styles specific to the ProductPage component container */
 .product-page-container {
-  background-color: #ffffff; /* White background for the product card */
-  border-radius: 8px; /* Rounded corners for the card */
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
-  overflow: hidden; /* Ensures child elements respect rounded corners */
-  max-width: 960px; /* Maximum width for the product card on larger screens */
-  width: 100%; /* Occupy full width up to max-width */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  max-width: 960px;
+  width: 100%;
   display: flex;
-  flex-direction: column; /* Stack sections vertically on small screens (mobile-first) */
+  flex-direction: column;
 }
 
-/* Media query for medium screens and larger (e.g., tablets, desktops) */
+/* Media query for medium screens and larger */
 @media (min-width: 768px) {
   .product-page-container {
-    flex-direction: row; /* Layout sections horizontally on wider screens */
+    flex-direction: row;
   }
   .image-section {
-    width: 50%; /* Image section takes half width */
+    width: 50%;
   }
   .info-section {
-    width: 50%; /* Info section takes half width */
+    width: 50%;
   }
 }
 
-/* Styles for the product image section */
+/* Image section */
 .image-section {
-  padding: 24px; /* Internal padding */
+  padding: 24px;
   display: flex;
-  justify-content: center; /* Center image horizontally */
-  align-items: center; /* Center image vertically */
-  background-color: #f9fafb; /* Light background for the image area */
+  justify-content: center;
+  align-items: center;
+  background-color: #f9fafb;
 }
 
-/* Styles for the product image itself */
+/* Product image */
 .product-image {
-  width: 100%; /* Image takes full width of its container */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensures image covers its area without distortion */
-  border-radius: 6px; /* Rounded corners for the image */
-  max-height: 384px; /* Maximum height on smaller screens */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  max-height: 384px;
 }
 
 @media (min-width: 768px) {
@@ -49,85 +50,158 @@
   }
 }
 
-/* Styles for the product information section */
+/* Info section */
 .info-section {
-  padding: 32px; /* Internal padding */
+  padding: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Styles for the product title */
+/* Title */
 .product-title {
-  font-size: 36px; /* Large font size */
-  font-weight: 700; /* Bold */
-  color: #1f2937; /* Dark gray */
-  margin-bottom: 16px; /* Space below */
+  font-size: 36px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
 }
 
-/* Styles for the product description */
+/* Description */
 .product-description {
-  color: #374151; /* Medium gray */
-  font-size: 18px; /* Standard text size */
-  line-height: 1.625; /* Good line spacing */
-  margin-bottom: 24px; /* Space below */
+  color: #374151;
+  font-size: 18px;
+  line-height: 1.625;
+  margin-bottom: 24px;
 }
 
-/* Container for price and stock indicator */
+/* Read more button */
+.read-more-toggle-button {
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 8px;
+  padding: 0;
+  text-decoration: underline;
+  transition: color 0.2s ease-in-out;
+}
+
+.read-more-toggle-button:hover {
+  color: #1d4ed8;
+}
+
+/* Price & stock row */
 .price-stock-container {
   display: flex;
-  align-items: baseline; /* Align price and stock text on the same baseline */
-  margin-bottom: 16px; /* Space below */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 16px; /* row gap, column gap */
+  margin-bottom: 16px;
 }
 
-/* Styles for the product price */
+/* Keep for cases when not on sale */
 .product-price {
-  font-size: 48px; /* Very large font size for emphasis */
-  font-weight: 800; /* Extra bold */
-  color: #2563eb; /* Blue color */
+  font-size: 48px;
+  font-weight: 800;
+  color: #2563eb;
 }
 
-/* Styles for the stock indicator text */
+/* Group for price pieces when on sale */
+.price-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* SALE! label */
+.sale-label {
+  font-size: 14px;
+  font-weight: 800;
+  color: #b91c1c;            /* deep red text */
+  background: #fee2e2;       /* soft red pill */
+  padding: 4px 10px;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+  animation: salePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes salePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+/* Original price with animated strike-through */
+.original-price {
+  position: relative;
+  font-size: 24px;
+  font-weight: 600;
+  color: #9ca3af;           /* gray text */
+  display: inline-block;
+  padding: 0 2px;
+}
+
+.original-price::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 3px;
+  width: 0;
+  background: #ef4444;      /* red strike */
+  transform: translateY(-50%);
+  animation: strikeThrough 900ms ease-out forwards;
+}
+
+@keyframes strikeThrough {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* Sale price styling */
+.sale-price {
+  font-size: 36px;
+  font-weight: 900;
+  color: #2563eb;          /* blue */
+  line-height: 1;
+}
+
+/* Stock indicator */
 .stock-indicator {
-  margin-left: 16px; /* Space between price and indicator */
-  font-weight: 500; /* Medium font weight */
-  font-size: 18px; /* Standard text size */
+  margin-left: auto;        /* push stock to the far right when space allows */
+  font-weight: 500;
+  font-size: 18px;
 }
 
-/* Specific colors for stock status */
-.in-stock {
-  color: #16a34a; /* Green for 'In Stock' */
-}
+.in-stock { color: #16a34a; }
+.out-of-stock { color: #dc2626; }
 
-.out-of-stock {
-  color: #dc2626; /* Red for 'Out of Stock' */
-}
-
-/* Styles for the quantity selector placeholder section */
+/* Quantity + Add to Cart */
 .quantity-placeholder-section {
-  margin-top: 24px; /* Space above */
+  margin-top: 24px;
 }
 
 .quantity-placeholder-text {
-  color: #4b5563; /* Gray color */
-  margin-bottom: 8px; /* Space below */
+  color: #4b5563;
+  margin-bottom: 8px;
 }
 
-/* Styles for the Add to Cart button */
 .add-to-cart-button {
-  width: 100%; /* Full width button */
-  background-color: #2563eb; /* Blue button background */
-  color: #ffffff; /* White text */
-  padding: 12px 24px; /* Internal padding */
-  border-radius: 6px; /* Rounded corners */
-  transition-property: background-color; /* Smooth transition for hover effect */
+  width: 100%;
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  transition-property: background-color;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06); /* Button shadow */
-  border: none; /* Remove default button border */
-  cursor: pointer; /* Indicate clickable element */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  border: none;
+  cursor: pointer;
 }
 
 .add-to-cart-button:hover {
-  background-color: #1d4ed8; /* Darker blue on hover */
+  background-color: #1d4ed8;
 }
