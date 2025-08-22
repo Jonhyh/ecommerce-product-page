@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 // Product data (This will eventually come from an API)
 const product = {
   id: 'book-101',
-  imageUrl: 'https://placehold.co/400x500/E0F2F7/2C3E50?text=Book+Cover',
-  title: 'The Great Software Workflow Guide',
+  imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2YVcNa30ywl3uSKeckKuFFvgH-39qMv6edQ&s',
+  title: 'How to Quiet Quit for System Engineer',
   description:
-    'A comprehensive guide to mastering efficient software development workflows, including version control, GitHub, build images, and RESTful API design. Learn best practices for modern software engineering.',
+    'Ever wondered how to disappear from work without actually resigning—or anyone noticing? This tongue-in-cheek survival manual teaches system engineers the ancient art of doing just enough to appear indispensable while simultaneously being invisible.',
   price: 29.90,            // original price shown with strike-through
   salePrice: 19.99,        // sale price to display
   currency: '$',
